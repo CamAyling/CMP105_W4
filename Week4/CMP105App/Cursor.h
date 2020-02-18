@@ -8,9 +8,5 @@ public:
 	~Cursor();
 
 	void update();
-	void setWindow(sf::RenderWindow* window);
-
-private:
-	sf::RenderWindow* window;
 };
 
