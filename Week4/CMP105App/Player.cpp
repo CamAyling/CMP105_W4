@@ -2,7 +2,7 @@
 
 Player::Player()
 {
-	velocity.x = 100;
+	velocity.x = 200;
 }
 
 Player::~Player()
