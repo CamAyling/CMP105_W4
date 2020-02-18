@@ -7,6 +7,7 @@
 #include <iostream>
 #include "Player.h"
 #include "Enemy.h"
+#include "Cursor.h"
 
 
 class Level{
@@ -31,7 +32,9 @@ private:
 	Enemy enemy;
 	Enemy ball;
 	Player playerObject;
+	Cursor cursor;
 	sf::Texture playerTexture;
 	sf::Texture enemyTexture;
 	sf::Texture ballTexture;
+	sf::Texture cursorTexture;
 };
