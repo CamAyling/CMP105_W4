@@ -29,7 +29,9 @@ private:
 
 	// Level objects
 	Enemy enemy;
+	Enemy ball;
 	Player playerObject;
 	sf::Texture playerTexture;
 	sf::Texture enemyTexture;
+	sf::Texture ballTexture;
 };

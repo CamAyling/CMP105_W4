@@ -9,21 +9,26 @@ Level::Level(sf::RenderWindow* hwnd, Input* in)
 	playerObject.setInput(input);
 
 	playerTexture.loadFromFile("gfx/Mushroom.png");
+	enemyTexture.loadFromFile("gfx/Goomba.png");
+	ballTexture.loadFromFile("gfx/Beach_Ball.png");
 
 	playerObject.setTexture(&playerTexture);
 	playerObject.setSize(sf::Vector2f(100, 100));
 	playerObject.setPosition(100, 300);
 
-	enemyTexture.loadFromFile("gfx/Goomba.png");
-
 	enemy.setTexture(&enemyTexture);
 	enemy.setSize(sf::Vector2f(100, 100));
 	enemy.setPosition(300, 100);
+	enemy.setWindow(window);
+
+	ball.setTexture(&ballTexture);
+	ball.setSize(sf::Vector2f(100, 100));
+	ball.setPosition(500, 100);
+	ball.setWindow(window);
 }
 
 Level::~Level()
 {
-
 }
 
 // handle user input
@@ -41,7 +46,8 @@ void Level::handleInput(float dt)
 // Update game objects
 void Level::update(float dt)
 {
-	enemy.update(dt, enemy.getPosition());
+	enemy.update(dt);
+	ball.update(dt);
 }
 
 // Render level
@@ -51,6 +57,7 @@ void Level::render()
 
 	window->draw(playerObject);
 	window->draw(enemy);
+	window->draw(ball);
 
 	endDraw();
 }

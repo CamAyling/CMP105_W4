@@ -7,9 +7,11 @@ public:
 	Enemy();
 	~Enemy();
 
-	void update(float dt, sf::Vector2f position);
+	void update(float dt);
+	void setWindow(sf::RenderWindow* hwnd);
 
 private:
 	int direction;
+	sf::RenderWindow* window;
 };
 
