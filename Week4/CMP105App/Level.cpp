@@ -14,6 +14,7 @@ Level::Level(sf::RenderWindow* hwnd, Input* in)
 	enemyTexture.loadFromFile("gfx/Goomba.png");
 	ballTexture.loadFromFile("gfx/Beach_Ball.png");
 	cursorTexture.loadFromFile("gfx/icon.png");
+	backTexture.loadFromFile("gfx/Level1_1.png");
 
 	playerObject.setTexture(&playerTexture);
 	playerObject.setSize(sf::Vector2f(100, 100));
@@ -32,6 +33,12 @@ Level::Level(sf::RenderWindow* hwnd, Input* in)
 	cursor.setTexture(&cursorTexture);
 	cursor.setSize(sf::Vector2f(25, 25));
 	cursor.setInput(input);
+
+	background.setTexture(&backTexture);
+	background.setSize(sf::Vector2f(11038, 675));
+	background.setPosition(0, 0);
+
+	view = window->getView();
 }
 
 Level::~Level()
@@ -46,6 +53,23 @@ void Level::handleInput(float dt)
 	{
 		window->close();
 	}
+	if (input->isKeyDown(sf::Keyboard::Left))
+	{
+		view.move(sf::Vector2f(-150, 0) * dt);
+		if (view.getCenter().x < 600)
+		{
+			view.setCenter(sf::Vector2f(600, view.getCenter().y));
+		}
+	}
+	if (input->isKeyDown(sf::Keyboard::Right))
+	{
+		view.move(sf::Vector2f(150, 0) * dt);
+		if (view.getCenter().x > 10438)
+		{
+			view.setCenter(sf::Vector2f(10438, view.getCenter().y));
+		}
+	}
+	window->setView(view);
 
 	playerObject.handleInput(dt);
 }
@@ -63,6 +87,7 @@ void Level::render()
 {
 	beginDraw();
 
+	window->draw(background);
 	window->draw(playerObject);
 	window->draw(enemy);
 	window->draw(ball);

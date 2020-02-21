@@ -8,6 +8,7 @@
 #include "Player.h"
 #include "Enemy.h"
 #include "Cursor.h"
+#include "Background.h"
 
 
 class Level{
@@ -29,12 +30,17 @@ private:
 	Input* input;
 
 	// Level objects
+	sf::View view;
+
 	Enemy enemy;
 	Enemy ball;
 	Player playerObject;
 	Cursor cursor;
+	Background background;
+
 	sf::Texture playerTexture;
 	sf::Texture enemyTexture;
 	sf::Texture ballTexture;
 	sf::Texture cursorTexture;
+	sf::Texture backTexture;
 };
